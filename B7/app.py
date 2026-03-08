@@ -33,7 +33,7 @@ model = client.models.generate_content(model=MODEL_VERSION,
                                 )
 
 # load cau noi khi mo dau llm
-with open('B7/config.json', 'r', encoding='utf-8') as file:
+with open('config.json', 'r', encoding='utf-8') as file:
     config = json.load(file)
     # tao func de goi den
     functions = config.get('function', 'giới thiệu nhà hàng')
@@ -69,7 +69,7 @@ def restaurant_chatbot():
         response = client.models.generate_content(model=MODEL_VERSION, 
                                        contents="",
                                        config=types.GenerateContentConfig(
-                                           system_instructions=SYSTEM_INTRO
+                                           system_instruction=SYSTEM_INTRO
                                        )
                                 )
         # kiem tra prompt co de cap den meu (kthuat cat chu)
@@ -81,7 +81,7 @@ def restaurant_chatbot():
             response = client.models.generate_content(model=MODEL_VERSION, 
                                        contents="",
                                        config=types.GenerateContentConfig(
-                                           system_instructions=SYSTEM_INTRO
+                                           system_instruction=SYSTEM_INTRO
                                        )
                                 )
             bot_reply = response.text
